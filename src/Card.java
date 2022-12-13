@@ -1,27 +1,19 @@
 public class Card {
-    private int rank;
-    private String color;
+    private String rank;
     private String suit;
+    private int point;
 
-    public Card(int rank, String color, String suit){
+    public Card(String rank, String suit, int point){
         this.rank = rank;
-        this.color = color;
+        this.point = point;
         this.suit = suit;
     }
-    public int getRank() {
+    public String getRank() {
         return rank;
     }
 
-    public void setRank(int rank) {
+    public void setRank(String rank) {
         this.rank = rank;
-    }
-
-    public String getColor() {
-        return color;
-    }
-
-    public void setColor(String color) {
-        this.color = color;
     }
 
     public String getSuit() {
@@ -31,6 +23,14 @@ public class Card {
     public void setSuit(String suit) {
         this.suit = suit;
     }
+    public int getPoint() {
+        return point;
+    }
+
+    public void setColor(int point) {
+        this.point = point;
+    }
+
     public String toString(){
         return rank + " of " + suit;
     }

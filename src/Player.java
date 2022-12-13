@@ -9,12 +9,18 @@ public class Player {
         points = 0;
     }
     public Player(String name, Deck cards){
-
-        hand = cards;
-        points = 0;
+        //use deck methods to add cards to hand
+        while (cards.isEmpty() == false){
+            hand.add(cards.deal());
+        }
     }
     public void addPoints(int points){
         this.points += points;
     }
-    public void addCard
+    public void addCard(Card c){
+        hand.add(c);
+    }
+    public String toString(){
+        return name + " has " + points + " points\n" + name + "'s cards" + hand;
+    }
 }

@@ -3,10 +3,10 @@ public class Deck {
     private ArrayList<Card> cards;
     private int cardsLeft = 0;
     public Deck(String[] ranks, String[] suits, int[] values){
+        cards = new ArrayList<Card>();
         for (int i = 0; i < ranks.length; i++){
-            for (int j = 0; j < suits.length; j++) {
+            for (int j = 0; j < suits.length; j++)
                 cards.add(new Card(ranks[i], suits[j], values[i]));
-            }
         }
         cardsLeft = cards.size();
     }
@@ -16,12 +16,12 @@ public class Deck {
         }
         return true;
     }
-    public void getCardsLeft(){
+    public int getCardsLeft(){
         return cardsLeft;
     }
     public void Shuffle(){
         for (int i = 0; i < cards.size(); i++){
-            int swap = Math.random() * cards.size() + 1;
+            int swap = (int) (Math.random() * cards.size() + 1);
 
         }
     }
@@ -31,11 +31,11 @@ public class Deck {
     }
     public void shuffle(){
         cardsLeft = cards.size();
-        for (int i = cards.size(); i > 0; i--){
-            int r = (int)(Math.random() * i + 1);
-            Card temp = new Card(cards.get(r));
-            cards.set(r, cards.get(i));
-            cards.set(i, temp);
+        for (int i = cards.size() - 1; i >= 0; i--){
+            int r = (int)(Math.random() * i) + 1;
+            Card temp = cards.get(i);
+            cards.set(i, cards.get(r));
+            cards.set(r, temp);
         }
     }
 }

@@ -1,12 +1,12 @@
-import java.util.ArrayList;
 import java.util.Scanner;
-
 public class Game {
     //instance variables
     private Player player;
     private Deck deck;
     //initialize variables
+    private GameViewer game;
     public Game(Player player, Deck deck){
+        this.game = new GameViewer(this);
         this.deck = deck;
         this.player = player;
     }
@@ -26,6 +26,8 @@ public class Game {
         Card Draw;
         deck.shuffle();
         Draw = deck.deal();
+        game.setHand(Draw);
+        game.repaint();
         int points = Draw.getPoint();
         //while you have not lost or enter stand, continue to ask for player input
         while (run == true){
@@ -35,6 +37,8 @@ public class Game {
             String input = s.nextLine();
             if (input.equals("hit")){
                 Draw = deck.deal();
+                game.setHand(Draw);
+                game.repaint();
                 points += Draw.getPoint();
             }
             else if (input.equals("stand")){
@@ -43,6 +47,8 @@ public class Game {
             }
             if (points > 21){
                 System.out.println("You Lose, you went over 21 :(");
+                game.setMessage("You Lose, you went over 21 :(");
+                game.repaint();
                 return;
             }
         }
@@ -51,19 +57,28 @@ public class Game {
         if (computer > 21){
             System.out.println("Computer received " + computer + " points" +
                     " you received " + points + " so you win! :)");
+            game.setMessage("Computer received " + computer + " points" +
+                    " you received " + points + " so you win! :)");
+            game.repaint();
             return;
         }
         else{
             if (computer > points){
                 System.out.println("Computer scored higher, you lose :(");
+                game.setMessage("Computer scored higher, you lose :(");
+                game.repaint();
                 return;
             }
             else if (computer == points){
                 System.out.println("You and computer tied! :/");
+                game.setMessage("You and computer tied! :/");
+                game.repaint();
                 return;
             }
             else{
                 System.out.println("You win! :)");
+                game.setMessage("You win! :)");
+                game.repaint();
                 return;
             }
         }

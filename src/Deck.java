@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import javax.swing.*;
 public class Deck {
     //instance variables
     private ArrayList<Card> cards;
@@ -7,9 +8,12 @@ public class Deck {
     //make a new deck using input variables and set card size
     public Deck(String[] ranks, String[] suits, int[] values){
         cards = new ArrayList<Card>();
+        int c = 1;
         for (int i = 0; i < ranks.length; i++){
-            for (int j = 0; j < suits.length; j++)
-                cards.add(new Card(ranks[i], suits[j], values[i]));
+            for (int j = 0; j < suits.length; j++) {
+                cards.add(new Card(ranks[i], suits[j], values[i], new ImageIcon("Resources/" + c + ".png").getImage()));
+                c++;
+            }
         }
         cardsLeft = cards.size();
     }

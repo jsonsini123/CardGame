@@ -55,8 +55,8 @@ public class Card {
     public String toString(){
         return rank + " of " + suit;
     }
-    //create draw method that takes in an x and a y to draw out the cards in hand in the graphic
+    // This method draws the card in the GUI
     public void drawCard(Graphics g, int x, int y, GameViewer game){
-        g.drawImage(card, x, y, 100, 200, game);
+        g.drawImage(card, x, y, 150, 225, game);
     }
 }

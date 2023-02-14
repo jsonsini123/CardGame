@@ -38,13 +38,17 @@ public class GameViewer extends JFrame{
         // Paint the background and text with current data in
         g.drawImage(new ImageIcon("Resources/download.jpg").getImage(), 0, 0, 1000, 1000, this);
         g.drawImage(new ImageIcon("Resources/back.png").getImage(), 200, 500, 150, 225,this);
+
         g.setFont(new Font("Font", Font.TYPE1_FONT, 30));
         g.setColor(Color.yellow);
         g.drawString("Do you want to hit or stand?", 300, 300);
         g.drawString("Current Total: " + points, 200, 250);
         g.setColor(Color.red);
         g.drawString("Blackack By: Jake Sonsini", 300, 100);
+        // The initial card glitches out for some reason
+        // so I need to print it here even though it should print in the upcoming array
         card.drawCard(g, 350, 500, this);
+
         // Check to see if there are any card values or if a new card has been drawn
         if (card != null && card != cardprevious){
             // Add hand to arraylist
@@ -66,6 +70,7 @@ public class GameViewer extends JFrame{
         // Set background info
         g.drawImage(new ImageIcon("Resources/download.jpg").getImage(), 0, 0, 1000, 1000, this);
         g.drawImage(new ImageIcon("Resources/back.png").getImage(), 200, 500, 150, 225,this);
+
         g.setColor(Color.red);
         g.drawString("Blackack By: Jake Sonsini", 300, 100);
         g.setFont(new Font("Font", Font.TYPE1_FONT, 30));
@@ -73,5 +78,10 @@ public class GameViewer extends JFrame{
         // Print the game ending message with the final total
         g.drawString(message, 200, 200);
         g.drawString("Final Total: " + points, 200, 250);
+
+        // Print out hand
+        for(int i = 0; i < cards.size(); i++){
+            cards.get(i).drawCard(g, 350 + shift * i, 500, this);
+        }
     }
 }
